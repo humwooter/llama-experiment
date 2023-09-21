@@ -18,9 +18,12 @@ extension Chat {
 
     @NSManaged public var chatName: String?
     @NSManaged public var modelPath: String?
+    @NSManaged public var modelName: String?
     @NSManaged public var chatHistory: [String]?
     @NSManaged public var id: UUID?
+    @NSManaged public var lastMessageDate: Date?
     @NSManaged public var relationship: NSSet?
+    
 
 }
 

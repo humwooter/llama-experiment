@@ -4,6 +4,8 @@
         <attribute name="chatHistory" optional="YES" attributeType="Transformable"/>
         <attribute name="chatName" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="lastMessageDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="modelName" optional="YES" attributeType="String"/>
         <attribute name="modelPath" optional="YES" attributeType="String"/>
         <relationship name="relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message"/>
     </entity>

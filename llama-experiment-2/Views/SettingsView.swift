@@ -13,7 +13,13 @@ import AppKit
 
 class UserPreferences: ObservableObject {
     
-
+    @Published var openAIKey: String {
+        didSet {
+            saveToKeychain(key: "OpenAI_API_Key", data: Data(openAIKey.utf8))
+        }
+    }
+    
+    
     @Published var accentColor: Color {
         didSet {
             UserDefaults.standard.setColor(color: accentColor, forKey: "accentColor")
@@ -37,6 +43,11 @@ class UserPreferences: ObservableObject {
         self.accentColor = UserDefaults.standard.color(forKey: "accentColor") ?? Color.blue
         self.fontSize = CGFloat(UserDefaults.standard.float(forKey: "fontSize")) != 0.0 ? CGFloat(UserDefaults.standard.float(forKey: "fontSize")) : CGFloat(16)
         self.fontName = UserDefaults.standard.string(forKey: "fontName") ?? "seif"
+        if let data = loadFromKeychain(key: "OpenAI_API_Key") {
+            self.openAIKey = String(data: data, encoding: .utf8) ?? ""
+        } else {
+            self.openAIKey = ""
+        }
     }
 }
 
@@ -47,7 +58,7 @@ extension UserDefaults {
             set(data, forKey: key)
         }
     }
-
+    
     func color(forKey key: String) -> Color? {
         guard let data = data(forKey: key),
               let nsColor = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? NSColor
@@ -57,13 +68,21 @@ extension UserDefaults {
     }
 }
 
-
 struct SettingsView: View {
     @EnvironmentObject var userPreferences: UserPreferences
     let fonts = ["Helvetica Neue", "Times New Roman", "Courier New", "American Typewriter", "Bradley Hand"]
-
-    @Binding var pythonScriptsPath: String
-
+    
+    //    @Binding var pythonScriptsPath: String
+    @State private var openAIKey: String? = {
+        if let data = loadFromKeychain(key: "OpenAI_API_Key") {
+            return String(data: data, encoding: .utf8)
+        } else {
+            return nil
+        }
+    }()
+    
+    @State private var enteredKey: String = ""
+    
     var body: some View {
         Form {
             Section(header: Text("Accent Color")) {
@@ -79,30 +98,26 @@ struct SettingsView: View {
                 }
             }
             .pickerStyle(SegmentedPickerStyle())
-
             
-            Section(header: Text("Python Scripts Path")) {
-                Text("Current path: \(pythonScriptsPath)")
-                Button("Select Path") {
-                    let newPath = selectPythonScriptsPath()
-                    if let newPath = newPath {
-                        pythonScriptsPath = newPath
-                    }
-                }
+            
+            //             Section(header: Text("API Keys")) {
+            //                 SecureField("OpenAI Key", text: $enteredKey) {
+            //                     print("SETTING OPENAI KEY!")
+            //                     saveToKeychain(key: "OpenAI_API_Key", data: Data(enteredKey.utf8))
+            //                     openAIKey = enteredKey
+            //                 }
+            // //                SecureField("OpenAI Key", text: $enteredKey, onCommit: {
+            // //                    saveToKeychain(key: "OpenAI_API_Key", data: Data(enteredKey.utf8))
+            // //                    openAIKey = enteredKey
+            // //                })
+            //             }
+            Section(header: Text("API Keys")) {
+                SecureField("OpenAI Key", text: $userPreferences.openAIKey)
             }
+            
+            
         }.formStyle(.grouped)
     }
-
-    func selectPythonScriptsPath() -> String? {
-        let panel = NSOpenPanel()
-        panel.canChooseFiles = false
-        panel.canChooseDirectories = true
-        panel.allowsMultipleSelection = false
-
-        if panel.runModal() == .OK, let url = panel.url {
-            return url.path
-        }
-        return nil
-    }
+    
+    
 }
-

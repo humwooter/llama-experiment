@@ -23,6 +23,12 @@
 		344BB7322AA7E9AF00C3AF22 /* Chat+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BB7302AA7E9AF00C3AF22 /* Chat+CoreDataProperties.swift */; };
 		344BB7352AAA8A9A00C3AF22 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BB7342AAA8A9A00C3AF22 /* SettingsView.swift */; };
 		344BB7372AAFB2D600C3AF22 /* QAView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344BB7362AAFB2D600C3AF22 /* QAView.swift */; };
+		34DD91822ABD884000A523D0 /* GlobalFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD91812ABD884000A523D0 /* GlobalFuncs.swift */; };
+		34DD91842ABE10A000A523D0 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD91832ABE10A000A523D0 /* ChatView.swift */; };
+		34DD91862ABE10E400A523D0 /* NewChatOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD91852ABE10E400A523D0 /* NewChatOverlayView.swift */; };
+		34DD91882ABE110E00A523D0 /* ModelTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD91872ABE110E00A523D0 /* ModelTypeView.swift */; };
+		34DD918A2ABE112E00A523D0 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD91892ABE112E00A523D0 /* ServerManager.swift */; };
+		34DD918C2ABE115900A523D0 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DD918B2ABE115900A523D0 /* InitialView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +68,12 @@
 		344BB7302AA7E9AF00C3AF22 /* Chat+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Chat+CoreDataProperties.swift"; path = "../Chat+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		344BB7342AAA8A9A00C3AF22 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		344BB7362AAFB2D600C3AF22 /* QAView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QAView.swift; sourceTree = "<group>"; };
+		34DD91812ABD884000A523D0 /* GlobalFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFuncs.swift; sourceTree = "<group>"; };
+		34DD91832ABE10A000A523D0 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		34DD91852ABE10E400A523D0 /* NewChatOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatOverlayView.swift; sourceTree = "<group>"; };
+		34DD91872ABE110E00A523D0 /* ModelTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTypeView.swift; sourceTree = "<group>"; };
+		34DD91892ABE112E00A523D0 /* ServerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		34DD918B2ABE115900A523D0 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +105,7 @@
 		344BB6E52AA7E02200C3AF22 = {
 			isa = PBXGroup;
 			children = (
+				34DD91802ABD882000A523D0 /* Tools */,
 				344BB7332AAA8A7F00C3AF22 /* Views */,
 				344BB7282AA7E7CA00C3AF22 /* Models */,
 				344BB6F02AA7E02200C3AF22 /* llama-experiment-2 */,
@@ -157,6 +170,7 @@
 				344BB7302AA7E9AF00C3AF22 /* Chat+CoreDataProperties.swift */,
 				344BB72B2AA7E99B00C3AF22 /* Message+CoreDataClass.swift */,
 				344BB72C2AA7E99B00C3AF22 /* Message+CoreDataProperties.swift */,
+				34DD91892ABE112E00A523D0 /* ServerManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,8 +181,20 @@
 				344BB6F82AA7E02200C3AF22 /* ContentView.swift */,
 				344BB7342AAA8A9A00C3AF22 /* SettingsView.swift */,
 				344BB7362AAFB2D600C3AF22 /* QAView.swift */,
+				34DD91832ABE10A000A523D0 /* ChatView.swift */,
+				34DD91852ABE10E400A523D0 /* NewChatOverlayView.swift */,
+				34DD91872ABE110E00A523D0 /* ModelTypeView.swift */,
+				34DD918B2ABE115900A523D0 /* InitialView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		34DD91802ABD882000A523D0 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				34DD91812ABD884000A523D0 /* GlobalFuncs.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,14 +334,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				344BB7312AA7E9AF00C3AF22 /* Chat+CoreDataClass.swift in Sources */,
+				34DD918C2ABE115900A523D0 /* InitialView.swift in Sources */,
 				344BB6F72AA7E02200C3AF22 /* llama_experiment_2.xcdatamodeld in Sources */,
 				344BB6F22AA7E02200C3AF22 /* llama_experiment_2App.swift in Sources */,
+				34DD91862ABE10E400A523D0 /* NewChatOverlayView.swift in Sources */,
 				344BB7352AAA8A9A00C3AF22 /* SettingsView.swift in Sources */,
+				34DD91842ABE10A000A523D0 /* ChatView.swift in Sources */,
+				34DD91822ABD884000A523D0 /* GlobalFuncs.swift in Sources */,
 				344BB7372AAFB2D600C3AF22 /* QAView.swift in Sources */,
 				344BB6F92AA7E02200C3AF22 /* ContentView.swift in Sources */,
 				344BB6F42AA7E02200C3AF22 /* Persistence.swift in Sources */,
+				34DD918A2ABE112E00A523D0 /* ServerManager.swift in Sources */,
 				344BB7322AA7E9AF00C3AF22 /* Chat+CoreDataProperties.swift in Sources */,
 				344BB72E2AA7E99B00C3AF22 /* Message+CoreDataProperties.swift in Sources */,
+				34DD91882ABE110E00A523D0 /* ModelTypeView.swift in Sources */,
 				344BB72D2AA7E99B00C3AF22 /* Message+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
